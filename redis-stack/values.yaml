@@ -1,0 +1,19 @@
+name: redis-stack
+redis_stack:
+  image: "redis/redis-stack"
+  tag: "7.2.0-v11"
+  redis_insight: "redis-insight"
+  redis_insight_port: 8001
+  redis_server_port: 6379
+  replicas: 1
+  memory: 5Gi
+  cpu: 1000m
+  affinity: {}
+
+service:
+  type: LoadBalancer
+  ports:
+    - port: 6379
+      targetPort: 6379
+    - port: 8001
+      targetPort: 8001
